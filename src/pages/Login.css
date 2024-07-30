@@ -1,0 +1,19 @@
+.loginPg {
+    margin: auto;
+}
+
+.loginPg h1 {
+    margin-bottom: 16px;
+}
+
+.login-main {
+    background-color: #FFB8B2;
+    border: 1px solid black;
+    width: 50vw;
+    margin: auto;
+    margin: 70px auto;
+}
+
+.login h1 {
+    margin-bottom: 16px;
+}

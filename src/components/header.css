@@ -1,0 +1,94 @@
+.header {
+    background-color: #DFF0EB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.header img {
+    height: 50px;
+    margin-right: 12px;
+}
+
+.logo-div {
+    display: flex;
+    align-items: center;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    padding: 12px 16px;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}  
+
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav {
+    margin-right: 12px;
+    width: 450px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.signup {
+    background-color: #EB4C2C;
+    border: 1px solid black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+}
+
+.login {
+    background-color: transparent;
+    border: none;
+    padding-right: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

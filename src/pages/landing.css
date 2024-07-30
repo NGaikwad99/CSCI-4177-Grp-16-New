@@ -1,0 +1,150 @@
+.landing .intro {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 85vh;
+    margin-bottom: 18px;
+}
+
+.landing .intro img {
+    height: 200px;
+}
+
+.landing .intro .heading {
+    animation: fadeIn 2s ease-in;
+}
+
+.landing .intro .heading h1 {
+    font-size: 56px;
+}
+
+.landing h1 {
+    font-size: 48px;
+}
+
+.landing h2 {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.landing p {
+    font-size: 20px;
+}
+
+.testimonials p {
+    padding: 18px;
+    border-radius: 32px;
+    font-size: 24px;
+}
+
+.testimonials .author {
+    font-style: italic;
+    display: block;
+    text-align: right;
+}
+
+.testimonials p {
+    animation: fadeInLeft 1s ease-in forwards;
+    opacity: 0; /* Start with opacity 0 to make them invisible */
+    transform: translateX(100%); 
+}
+
+.testimonials p:nth-child(1) {
+    background-color: #FFB8B2; /* Gold */
+    /* animation-delay: 1s; */
+}
+
+.testimonials p:nth-child(2) {
+    background-color: #e0bffb; /* Sky Blue */
+    animation-delay: 1s;
+}
+
+.testimonials p:nth-child(3) {
+    background-color: #EAF475; /* Hot Pink */
+    animation-delay: 2s;
+}
+
+.testimonials p:nth-child(4) {
+    font-style: italic;
+    text-align: left;
+    opacity: 1;
+    animation-delay: 3s;
+}
+
+.mission {
+    background-color: #D2F1FB;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 20px
+}
+
+.mission-image {
+    float: right;
+    width: 20%;
+}
+
+.mission .content {
+    float: left;
+    text-align: left;
+    width: 70%;
+    line-height: 24px;
+    animation: slideInLeft 10s ease-in-out;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.services .service {
+    animation: fadeInUp 3s ease-in-out;
+    padding: 12px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1200px) {
+    .services {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .landing .intro {
+        flex-direction: column;
+        
+    }
+}
+
+@media (max-width: 600px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        
+    }
+}
+  

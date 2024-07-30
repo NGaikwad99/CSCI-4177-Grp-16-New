@@ -1,0 +1,26 @@
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.chatbot-toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.chat-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 300px; /* Adjust width as needed */
+}

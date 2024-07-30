@@ -1,0 +1,62 @@
+.online-resources {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .online-resources h2 {
+    margin-left: 7%;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .articles, .videos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    padding-bottom: 0px;
+  }
+  
+  .resource {
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+     padding-bottom: 0px;
+  }
+  
+  .resource h3 {
+    margin: 10px 0;
+  }
+  
+  .image, .video {
+    background-color: #ccc;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .play-button {
+    position: absolute;
+    font-size: 2em;
+    color: black;
+  }
+
+  .videos{
+    margin-bottom: 60px;
+  }
+
+  .content{
+    font-size: 14px;
+    
+  }
+  .image img , .video img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px; 
+  }
+  
