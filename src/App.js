@@ -12,6 +12,7 @@ import OnlineResources from './pages/OnlineResources';
 import Chatbot from './components/Chatbot';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import ResetPassword from './pages/ResetPassword';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
           <Route path = "SignUp" element={<SignUp />} />
           <Route path="OnlineResources" element={<OnlineResources />} />
           <Route path="LocalResources" element={<LocalResources />} />
-          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="Dashboard" element={<Dashboard />} />ResetPassword
+          <Route path="ResetPassword" element={<ResetPassword />} />
         </Routes>
         
         <Footer />

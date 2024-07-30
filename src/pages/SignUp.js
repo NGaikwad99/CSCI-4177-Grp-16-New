@@ -39,12 +39,11 @@ function SignUp() {
         try {
             const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, password, role });
             console.log(res.data);
-            // const token = res.data.token;
+            const token = res.data.token;
 
-            // localStorage.setItem('token', token);
-
+            localStorage.setItem('token', token);
             login();
-            navigate('/FAQ')
+            navigate('/Dashboard')
 
             // console.log('Login successful. Token:', token);
         } catch (err) {
@@ -70,9 +69,6 @@ function SignUp() {
 
                     <input type="text" placeholder="Username" value={username} 
                             onChange={(e) => setUsername(e.target.value)} required/>
-                    
-                    {/* <input type="phone" placeholder="Phone number" value={phone} 
-                            onChange={(e) => setPhone(e.target.value)} required/> */}
 
                     <select
                         id="role"

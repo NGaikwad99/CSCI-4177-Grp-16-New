@@ -60,6 +60,30 @@ function startServer(server, db){
         }
     });
 
+    app.put('/resetPassword', async (req, res) => {
+        const { username, password } = req.body;
+        
+        try {
+            // Find the user by username
+            const user = await db.collection(collectionName).findOne({ username });
+            if (!user) return res.status(400).send('User does not exist');
+            
+            // Hash the new password
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            
+            // Update the user's password
+            await db.collection(collectionName).updateOne(
+                { username },
+                { $set: { password: hashedPassword } }
+            );
+            
+            res.status(200).json({ success: true, message: 'Password updated successfully!' });
+        } catch (err) {
+            res.status(500).json({ success: false, message: err.message });
+        }
+    });    
+
     app.get('/articles', async (req, res) => {
         try {
             const articles = await getArticles();
