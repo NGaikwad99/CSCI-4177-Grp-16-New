@@ -22,7 +22,7 @@ const ResetPassword = () => {
             setError('Passwords do not match. Please try again.');
         } else {
             try {
-                const res = await axios.post('https://localhost:3001/resetPassword', { username, password });
+                const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/resetPassword', { username, password });
                 console.log(res.data);
                 const token = res.data.token;
     
