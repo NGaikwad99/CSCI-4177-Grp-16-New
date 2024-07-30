@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const collectionName = 'users';
 const User = require('./models/User');
+const { getArticles, getVideos } = require('./OnlineResources');
 
 const MONGO_URI = 'mongodb+srv://admin:hm8KzxFO1RX4qArn@ssdata.tcuzl0t.mongodb.net/safespace?retryWrites=true&w=majority&appName=ssdata';
 
@@ -41,7 +42,7 @@ function startServer(server, db){
 
     app.post('/register', async (req, res) => {
         const { name, email, username, password, role } = req.body;
-        // const hashedPassword = await bcrypt.hash(password, 10);
+        
         const newUser = new User({ name: name, email: email, username: username, password: password, role: role });
         try {
             await newUser.save();
