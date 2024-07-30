@@ -1,0 +1,52 @@
+.dashboard {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    background-color: #f9f9f9; /* Light grey background */
+  }
+  
+  .grid-item .image {
+    background-color: #ccc;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .grid-item span {
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 10px;
+  }
+  
+  .meetings { background-color: #add8e6; }
+  .forum { background-color: #f4a7a8; }
+  .journal { background-color: #f3e5ab; }
+  .profile { background-color: #add8e6; }
+  .friends { background-color: #b8e8b8; }
+  .settings { background-color: #add8e6; }
+  
