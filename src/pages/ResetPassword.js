@@ -18,6 +18,8 @@ const ResetPassword = () => {
             setError('Username is required');
         } else if (password === "") {
             setError('Password is required');
+        } else if (password !== confPassword) {
+            setError('Passwords do not match. Please try again.');
         } else {
             try {
                 const res = await axios.post('https://localhost:3001/resetPassword', { username, password });
