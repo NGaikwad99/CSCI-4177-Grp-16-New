@@ -47,6 +47,7 @@ function Header() {
                         <Link to="/LocalResources">Local Resources</Link>
                         <Link to="/OnlineResources">Online Resources</Link>
                         <Link to="/">About us</Link>
+                        <Link to="/Dashboard">Dashboard</Link>
                     </nav>
                     <div className="auth">
                         <button className="signup" onClick={toSignup}>Sign up</button>

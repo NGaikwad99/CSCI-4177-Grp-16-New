@@ -11,6 +11,8 @@ import LocalResources from './pages/LocalResources';
 import OnlineResources from './pages/OnlineResources';
 import Chatbot from './components/Chatbot';
 import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
           <Route path = "SignUp" element={<SignUp />} />
           <Route path="OnlineResources" element={<OnlineResources />} />
           <Route path="LocalResources" element={<LocalResources />} />
+          <Route path="Dashboard" element={<Dashboard />} />
         </Routes>
         
         <Footer />
