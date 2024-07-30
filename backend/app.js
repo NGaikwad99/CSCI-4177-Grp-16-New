@@ -4,6 +4,7 @@ const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const collectionName = 'users';
+const bcrypt = require('bcrypt');
 const User = require('./models/User');
 const { getArticles, getVideos } = require('./OnlineResources');
 
@@ -29,9 +30,8 @@ function startServer(server, db){
             const user = await db.collection(collectionName).findOne({ username });
             if (!user) return res.status(400).send('Invalid credentials');
 
-            console.log(user);
-
-            if (user.password !== password) return res.status(400).send('Invalid credentials');
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) return res.status(400).send('Invalid credentials');
 
             const token = jwt.sign({ id: user._id }, secret, { expiresIn: '5h' });
             res.json({ token });
@@ -42,8 +42,12 @@ function startServer(server, db){
 
     app.post('/register', async (req, res) => {
         const { name, email, username, password, role } = req.body;
+
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
         
-        const newUser = new User({ name: name, email: email, username: username, password: password, role: role });
+        const newUser = new User({ name: name, email: email, username: username, password: hashedPassword, role: role });
+
         try {
             await newUser.save();
             console.log('User saved successfully');
@@ -52,8 +56,6 @@ function startServer(server, db){
             console.error('Error saving user:', error);
             res.status(500).send('Error registering user', error);
         }
-
-        res.status(201).send('User registered');
     });
 
     app.get('/articles', async (req, res) => {
