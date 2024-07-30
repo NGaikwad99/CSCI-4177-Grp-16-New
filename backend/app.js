@@ -30,6 +30,7 @@ function startServer(server, db){
             const user = await db.collection(collectionName).findOne({ username });
             if (!user) return res.status(400).send('Invalid credentials');
 
+           
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) return res.status(400).send('Invalid credentials');
 
@@ -43,6 +44,7 @@ function startServer(server, db){
     app.post('/register', async (req, res) => {
         const { name, email, username, password, role } = req.body;
 
+        // hashing password for secure storage
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         
