@@ -29,25 +29,26 @@ function Header() {
             </div>
 
             {isLoggedIn ? (
-                <>
-                    <button className="dashboard" onClick={toSignup}>Dashboard</button>
-                    <button className="meet" onClick={toLogin}>Meet</button>
-                    <button className="forum" onClick={toLogin}>Forum</button>
-                    <button className="journal" onClick={toLogin}>My Journal</button>
+                <div class="nav-auth">
+                    <nav className="nav">
+                        <Link to="/Dashboard">Dashboard</Link>
+                        <Link to="/Meet">Meet</Link>
+                        <Link to="/Forum">Forum</Link>
+                        <Link to="/Journal">Journal</Link>
+                    </nav>
                     <button onClick={toggleDropdown} className='profile-btn'><FaUserCircle size={40} color="#EB4C2C" /></button>
                     {isOpen && (
                         <div className="dropdown-menu">
                             <button onClick={() => {logout(); toLogin();}}>Logout</button>
                         </div>
                     )}
-                </>
+                </div>
             ) : (
                 <div class="nav-auth">
                     <nav className="nav">
+                        <Link to="/">About us</Link>
                         <Link to="/LocalResources">Local Resources</Link>
                         <Link to="/OnlineResources">Online Resources</Link>
-                        <Link to="/">About us</Link>
-                        <Link to="/Dashboard">Dashboard</Link>
                     </nav>
                     <div className="auth">
                         <button className="signup" onClick={toSignup}>Sign up</button>
