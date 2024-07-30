@@ -37,7 +37,7 @@ function SignUp() {
 
         e.preventDefault();
         try {
-            const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, role, password });
+            const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, password, role });
             console.log(res.data);
             // const token = res.data.token;
 
