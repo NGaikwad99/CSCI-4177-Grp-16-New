@@ -12,8 +12,6 @@ function Login() {
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
-        console.log(username + " " + password);
-
         e.preventDefault();
 
         // Checking the fields
@@ -31,13 +29,10 @@ function Login() {
                 localStorage.setItem('token', token);
     
                 login();
-    
-                console.log('Login successful. Token:', token);
                 setError('');
 
                 navigate('/Dashboard')
             } catch (err) {
-                console.error(err);
                 setError('Invalid username or password. Please try again.');
             }
         }
