@@ -10,8 +10,10 @@ function JournalEntry(props) {
 
   useEffect(() => {
     axios
-      //.get('http://csci-4177-grp-16-main.onrender.com/journalEntries/${id}')
-      .get(`http://localhost:3001/journalEntries/${id}`)
+      .get('http://csci-4177-grp-16-main.onrender.com/journalEntries/${id}')
+
+      //The following line is for local testing:
+      //.get(`http://localhost:3001/journalEntries/${id}`)
       .then((res) => {
         setEntry(res.data);
       })

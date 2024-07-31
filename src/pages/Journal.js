@@ -11,8 +11,10 @@ function Journal(){
    useEffect(() => {
     const getEntries = async () => {
       try {
-        //const response = await axios.get('http://csci-4177-grp-16-main.onrender.com/journalEntries');
-        const response = await axios.get('http://localhost:3001/journalEntries');
+        const response = await axios.get('http://csci-4177-grp-16-main.onrender.com/journalEntries');
+
+        //The following line is for local testing:
+        //const response = await axios.get('http://localhost:3001/journalEntries');
         setEntries(response.data);
         
       } catch (error) {
