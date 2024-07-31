@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
@@ -15,14 +14,15 @@ function SignUp() {
     const [error, setError] = useState("");
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const roles = ['patient', 'therapist']; 
+    // Email and password regex for input validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-    const roles = ['patient', 'therapist']; 
-
 
     async function handleSubmit(e) {
         console.log(username + " " + password);
 
+        // Checking the fields to ensure none of them are empty
         if (username === "" || password === "" || name === "" || email === "" || confPassword === "" || role === "") {
             setError('All fields are required.');
         } else if (password !== confPassword) {
@@ -36,6 +36,7 @@ function SignUp() {
         }
 
         e.preventDefault();
+
         try {
             const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, password, role });
             console.log(res.data);
@@ -43,9 +44,7 @@ function SignUp() {
 
             localStorage.setItem('token', token);
             login();
-            navigate('/Dashboard')
-
-            // console.log('Login successful. Token:', token);
+            navigate('/Dashboard');
         } catch (err) {
             console.error(err);
         }
