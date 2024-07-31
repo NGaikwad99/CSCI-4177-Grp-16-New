@@ -20,9 +20,6 @@ function SignUp() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
 
     async function handleSubmit(e) {
-        console.log(username + " " + password);
-
-        // Checking the fields to ensure none of them are empty
         if (username === "" || password === "" || name === "" || email === "" || confPassword === "" || role === "") {
             setError('All fields are required.');
         } else if (password !== confPassword) {
@@ -39,7 +36,6 @@ function SignUp() {
 
         try {
             const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, password, role });
-            console.log(res.data);
             const token = res.data.token;
 
             localStorage.setItem('token', token);
