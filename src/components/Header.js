@@ -6,7 +6,7 @@ import { AuthContext } from './authContext';
 import { FaUserCircle } from 'react-icons/fa';
 
 function Header() {
-    const { isLoggedIn, logout, userRole } = useContext(AuthContext);
+    const { isLoggedIn, logout } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => setIsOpen(!isOpen);

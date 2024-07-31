@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import meeting from "../assets/img/meeting.jpg";
@@ -7,10 +7,8 @@ import friends from "../assets/img/friends.jpg";
 import journal from "../assets/img/journal.jpg";
 import profile from "../assets/img/my_profile.jpg";
 import settings from "../assets/img/settings.jpg";
-import { AuthContext } from '../components/authContext';
 
 function Dashboard() {
-  const { userRole } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const toMeet = () => {
