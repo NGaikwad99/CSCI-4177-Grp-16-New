@@ -1,3 +1,4 @@
+// Author: Sofia Jia
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';

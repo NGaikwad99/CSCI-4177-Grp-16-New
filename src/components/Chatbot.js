@@ -1,3 +1,4 @@
+// Author: Sofia Jia
 import React, { useState, useMemo } from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
