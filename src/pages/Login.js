@@ -1,3 +1,4 @@
+
 import './Login.css';
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
@@ -12,8 +13,6 @@ function Login() {
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
-        console.log(username + " " + password);
-
         e.preventDefault();
 
         if (username === "") {
@@ -23,17 +22,14 @@ function Login() {
         } else {
             try {
                 const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/login', { username, password });
-                console.log(res.data);
-                const token = res.data.token;
-                const role = res.data.role;
+                const { token, role } = res.data;
                 localStorage.setItem('token', token);
-    
-                login(role);
-    
-                console.log('Login successful. Token:', token);
-                setError('');
+                localStorage.setItem('role', role);  
 
-                navigate('/FAQ')
+                login(role);
+
+                setError('');
+                navigate('/Dashboard');  
             } catch (err) {
                 console.error(err);
                 setError('Invalid username or password. Please try again.');
@@ -47,16 +43,16 @@ function Login() {
                 <h1>Login</h1>
 
                 <form className="inputForm loginForm" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Username"  value={username} 
-                            onChange={(e) => setUsername(e.target.value)} required/>
+                    <input type="text" placeholder="Username" value={username}
+                        onChange={(e) => setUsername(e.target.value)} required />
 
-                    <input type="password" placeholder="Password" value={password} 
-                            onChange={(e) => setPassword(e.target.value)} required/>
+                    <input type="password" placeholder="Password" value={password}
+                        onChange={(e) => setPassword(e.target.value)} required />
 
                     {error && <p className="error-msg">{error}</p>}
 
-                    <button type="submit" onClick={handleSubmit}><strong>SUBMIT</strong></button>
-                    <button type="button" onClick={() => {console.log("reset password clicked")}}><strong>RESET PASSWORD</strong></button>
+                    <button type="submit"><strong>SUBMIT</strong></button>
+                    <button type="button" onClick={() => { console.log("reset password clicked") }}><strong>RESET PASSWORD</strong></button>
                 </form>
             </div>
         </main>

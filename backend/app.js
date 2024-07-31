@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const collectionName = 'users';
 const bcrypt = require('bcrypt');
 const User = require('./models/User');
+const { getDatabase } = require('./db');
 const { getArticles, getVideos } = require('./OnlineResources');
 
 
@@ -30,13 +31,12 @@ function startServer(server, db){
         try {
             const user = await db.collection(collectionName).findOne({ username });
             if (!user) return res.status(400).send('Invalid credentials');
-
-           
+    
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) return res.status(400).send('Invalid credentials');
-
-            const token = jwt.sign({ id: user._id }, secret, { expiresIn: '5h' });
-            res.json({ token, role: user.role});
+    
+            const token = jwt.sign({ id: user._id, role: user.role }, secret, { expiresIn: '5h' });
+            res.json({ token, role: user.role });
         } catch (err) {
             res.status(500).json({ success: false, message: err.message });
         }

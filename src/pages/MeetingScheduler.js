@@ -1,3 +1,7 @@
+/**
+ * Author: Ahmed Al-Naamani
+ */
+
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -8,9 +12,18 @@ const BACKEND_URL = 'https://csci-4177-grp-16-main.onrender.com';
 
 function MeetingScheduler() {
     const location = useLocation();
-    const userRole = location.state?.userRole || localStorage.getItem('role'); // Get role from local storage
-    console.log('Location state:', location.state); 
-    console.log('User Role:', userRole); 
+    const [userRole, setUserRole] = useState(location.state?.userType || localStorage.getItem('role')); 
+
+    useEffect(() => {
+        if (!userRole) {
+            const storedRole = localStorage.getItem('role');
+            setUserRole(storedRole);
+        }
+        console.log('Location state:', location.state); 
+        console.log('User Role from location state:', location.state?.userType); 
+        console.log('User Role from localStorage:', localStorage.getItem('role')); 
+        console.log('Final User Role:', userRole);
+    }, [location.state, userRole]);
 
     const [meetingType, setMeetingType] = useState('');
     const [selectedPerson, setSelectedPerson] = useState('');
@@ -28,6 +41,7 @@ function MeetingScheduler() {
         try {
             const response = await axios.get(`${BACKEND_URL}/users`);
             const users = response.data.users;
+            console.log('Fetched Users:', users);
 
             if (userRole === 'therapist') {
                 setAvailableUsers(users.filter(user => user.role === 'patient'));
@@ -42,6 +56,7 @@ function MeetingScheduler() {
     const fetchUpcomingMeetings = useCallback(async () => {
         try {
             const response = await axios.get(`${BACKEND_URL}/meetings/user/${userRole}`);
+            console.log('Fetched Meetings:', response.data);
             setUpcomingMeetings(response.data);
         } catch (error) {
             console.error('Error fetching upcoming meetings:', error);
@@ -49,9 +64,11 @@ function MeetingScheduler() {
     }, [userRole]);
 
     useEffect(() => {
-        fetchUsers();
-        fetchUpcomingMeetings();
-    }, [fetchUsers, fetchUpcomingMeetings]);
+        if (userRole) {
+            fetchUsers();
+            fetchUpcomingMeetings();
+        }
+    }, [userRole, fetchUsers, fetchUpcomingMeetings]);
 
     const handleScheduleMeeting = async () => {
         const today = new Date();

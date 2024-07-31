@@ -20,15 +20,14 @@ function Header() {
     const toSignup = () => {
         navigate('/Signup');
     };
-
     const toMeet = () => {
-        if (userRole === 'therapist') {
-            navigate('/MeetingScheduler', { state: { userType: 'Therapist' } });
+        const role = localStorage.getItem('role'); 
+        if (role) {
+            navigate('/MeetingScheduler', { state: { userType: role } });
         } else {
-            navigate('/MeetingScheduler', { state: { userType: 'Patient' } });
+            console.error('User role is not defined');
         }
     };
-
     return (
         <header className="header">
             <div className="logo-div">
@@ -40,7 +39,7 @@ function Header() {
                 <div className="nav-auth">
                     <nav className="nav">
                         <Link to="/Dashboard">Dashboard</Link>
-                        <button className="meet" onClick={toMeet}>Meet</button>
+                        <button className="meet-btn" onClick={toMeet}>Meet</button>
                         <Link to="/Forum">Forum</Link>
                         <Link to="/Journal">Journal</Link>
                     </nav>
