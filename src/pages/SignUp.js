@@ -1,3 +1,4 @@
+// Author(s): Nupur Gaikwad (B00859350)
 import { useState, useContext } from 'react';
 import './SignUp.css';
 import axios from 'axios';

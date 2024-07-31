@@ -1,3 +1,4 @@
+// Author(s): Nupur Gaikwad (B00859350)
 const http = require('http');
 const { startServer } = require('./app');
 const { databaseConnection } = require('./db');
