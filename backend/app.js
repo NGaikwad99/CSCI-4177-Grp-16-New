@@ -4,6 +4,7 @@ const cors = require('cors');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const { getDatabase } = require('./db');
 const collectionName = 'users';
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
