@@ -10,6 +10,7 @@ const { getArticles, getVideos } = require('./OnlineResources');
 
 const MONGO_URI = 'mongodb+srv://admin:hm8KzxFO1RX4qArn@ssdata.tcuzl0t.mongodb.net/safespace?retryWrites=true&w=majority&appName=ssdata';
 
+// Connecting mongoose to database
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
@@ -27,13 +28,15 @@ function startServer(server, db){
     app.post('/login', async (req, res) => {
         const { username, password } = req.body;
         try {
+            // Finding user by username
             const user = await db.collection(collectionName).findOne({ username });
             if (!user) return res.status(400).send('Invalid credentials');
 
-           
+            // Verifying password
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) return res.status(400).send('Invalid credentials');
 
+            // Creating token after successful login
             const token = jwt.sign({ id: user._id }, secret, { expiresIn: '5h' });
             res.json({ token });
         } catch (err) {
@@ -44,13 +47,15 @@ function startServer(server, db){
     app.post('/register', async (req, res) => {
         const { name, email, username, password, role } = req.body;
 
-        // hashing password for secure storage
+        // Hashing password for secure storage
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         
+        // Creating new user object
         const newUser = new User({ name: name, email: email, username: username, password: hashedPassword, role: role });
 
         try {
+            // Saving new user in database
             await newUser.save();
             console.log('User saved successfully');
             res.status(201).send('User registered');

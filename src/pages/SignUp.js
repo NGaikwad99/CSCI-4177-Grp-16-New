@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
@@ -43,9 +42,7 @@ function SignUp() {
 
             localStorage.setItem('token', token);
             login();
-            navigate('/Dashboard')
-
-            // console.log('Login successful. Token:', token);
+            navigate('/Dashboard');
         } catch (err) {
             console.error(err);
         }
