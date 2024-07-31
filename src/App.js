@@ -13,7 +13,8 @@ import Chatbot from './components/Chatbot';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
-
+import Journal from './pages/Journal';
+import JournalEntry from './pages/JournalEntry';
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
           <Route path="LocalResources" element={<LocalResources />} />
           <Route path="Dashboard" element={<Dashboard />} />ResetPassword
           <Route path="ResetPassword" element={<ResetPassword />} />
+          <Route path = "Journal" element={<Journal />} />
+          <Route path = "JournalEntry/:id" element={<JournalEntry />} />
         </Routes>
         
         <Footer />

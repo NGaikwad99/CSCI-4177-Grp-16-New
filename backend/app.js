@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const collectionName = 'users';
 const bcrypt = require('bcrypt');
 const User = require('./models/User');
-const { getArticles, getVideos } = require('./OnlineResources');
+const { getArticles, getVideos, getEntries } = require('./backendFunctions');
 
 const MONGO_URI = 'mongodb+srv://admin:hm8KzxFO1RX4qArn@ssdata.tcuzl0t.mongodb.net/safespace?retryWrites=true&w=majority&appName=ssdata';
 
@@ -101,6 +101,39 @@ function startServer(server, db){
             res.status(500).send('Error retrieving videos');
         }
     });
+    
+    app.get('/journalEntries', async (req, res) => {
+        try {
+            const entries = await getEntries();
+            res.status(200).json(entries);
+        } catch (err) {
+            res.status(500).send('Error retrieving entries');
+        }
+    });
+
+    app.get('/journalEntries/:id', async (req, res) => {
+        try{
+            const entries = await db.collection('journalEntries').findOne({_id: new ObjectId(req.params.id)});
+            res.status(201).json(entries);
+        } catch(err){
+            res.status(500).json({success: false, message: err.message});
+        }
+
+    });
+
+
+    app.post('/newEntry', async (req, res) => {
+        const { title, text } = req.body;
+
+        const newEntry = new Entry({ title:title, text:text });
+        try {
+              const newEntry = await db.collection('journalEntries').insertOne(req.body);
+            res.status(200).json(entries);
+        } catch (err) {
+            res.status(500).send('Error adding entries');
+        }
+    });
+
 
     server.on('request', app);
 }
