@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const collectionName = 'users';
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const User = require('./models/User');
 const { getArticles, getVideos } = require('./OnlineResources');
 
@@ -19,8 +20,6 @@ function startServer(server, db){
     const app = express();
     app.use(cors());
     app.use(express.json());
-
-    const crypto = require('crypto');
 
     const secret = crypto.randomBytes(64).toString('hex');
     console.log(secret);
