@@ -25,10 +25,10 @@ function Login() {
                 const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/login', { username, password });
                 console.log(res.data);
                 const token = res.data.token;
-    
+                const role = res.data.role;
                 localStorage.setItem('token', token);
     
-                login();
+                login(role);
     
                 console.log('Login successful. Token:', token);
                 setError('');
