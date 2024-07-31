@@ -1,4 +1,4 @@
-
+// Author(s): Nupur Gaikwad (B00859350)
 import './Login.css';
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
@@ -15,12 +15,14 @@ function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        // Checking the fields
         if (username === "") {
             setError('Username is required');
         } else if (password === "") {
             setError('Password is required');
         } else {
             try {
+                // Logging in the user and getting token
                 const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/login', { username, password });
                 const { token, role } = res.data;
                 localStorage.setItem('token', token);
@@ -31,7 +33,6 @@ function Login() {
                 setError('');
                 navigate('/Dashboard');  
             } catch (err) {
-                console.error(err);
                 setError('Invalid username or password. Please try again.');
             }
         }
@@ -51,8 +52,8 @@ function Login() {
 
                     {error && <p className="error-msg">{error}</p>}
 
-                    <button type="submit"><strong>SUBMIT</strong></button>
-                    <button type="button" onClick={() => { console.log("reset password clicked") }}><strong>RESET PASSWORD</strong></button>
+                    <button type="submit" onClick={handleSubmit}><strong>SUBMIT</strong></button>
+                    <button type="button" onClick={() => {navigate('/ResetPassword');}}><strong>RESET PASSWORD</strong></button>
                 </form>
             </div>
         </main>

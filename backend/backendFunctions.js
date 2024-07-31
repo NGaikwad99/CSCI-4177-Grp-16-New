@@ -28,4 +28,18 @@ async function getVideos() {
     }
 }
 
-module.exports = { getArticles, getVideos };
+async function getEntries() {
+    try {
+        const db = getDatabase();
+        if (!db) {
+            throw new Error('Database not connected');
+        }
+        const entries = await db.collection('journalEntries').find().toArray();
+        return entries;
+    } catch (err) {
+        console.error('Error fetching entries:', err.message);
+        throw err;
+    }
+}
+
+module.exports = { getArticles, getVideos, getEntries };

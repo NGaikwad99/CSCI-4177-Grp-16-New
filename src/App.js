@@ -1,3 +1,4 @@
+// Author(s): All
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,28 +14,29 @@ import Chatbot from './components/Chatbot';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import MeetingScheduler from './pages/MeetingScheduler';
-
+import ResetPassword from './pages/ResetPassword';
+import Journal from './pages/Journal';
+import JournalEntry from './pages/JournalEntry';
 
 function App() {
-
   return (
     <div className="App">
       <Router>
         <Header />
-
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-          <Route path ="ContactUs" element={<ContactUs />} />
-          <Route path = "FAQ" element={<FAQ />} />
-          <Route path = "Login" element={<Login />} />
-          <Route path = "SignUp" element={<SignUp />} />
+          <Route path="ContactUs" element={<ContactUs />} />
+          <Route path="FAQ" element={<FAQ />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="SignUp" element={<SignUp />} />
           <Route path="OnlineResources" element={<OnlineResources />} />
           <Route path="LocalResources" element={<LocalResources />} />
           <Route path="MeetingScheduler" element={<MeetingScheduler />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          
+          <Route path="ResetPassword" element={<ResetPassword />} />
+          <Route path="Journal" element={<Journal />} />
+          <Route path="JournalEntry/:id" element={<JournalEntry />} />
         </Routes>
-        
         <Footer />
       </Router>
       <Chatbot />

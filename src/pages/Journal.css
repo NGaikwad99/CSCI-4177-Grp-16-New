@@ -1,0 +1,33 @@
+/* author: Devon Turple B00851220 */
+.content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.cardContainer{
+    font-size: large;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.entryForm{
+    margin: auto;
+}
+
+.text{
+    width: 400px;
+    height: 200px;
+}
+.newEntry{
+    margin:auto;
+}
+.entry{
+    margin:auto;
+}
+.entryTitle{
+    font-size: large;
+    font-weight: bold;
+    
+}

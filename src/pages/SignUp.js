@@ -1,3 +1,4 @@
+// Author(s): Nupur Gaikwad (B00859350)
 import { useState, useContext } from 'react';
 import './SignUp.css';
 import axios from 'axios';
@@ -7,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
@@ -15,14 +15,12 @@ function SignUp() {
     const [error, setError] = useState("");
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const roles = ['patient', 'therapist']; 
+    // Email and password regex for input validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-    const roles = ['patient', 'therapist']; 
-
 
     async function handleSubmit(e) {
-        console.log(username + " " + password);
-
         if (username === "" || password === "" || name === "" || email === "" || confPassword === "" || role === "") {
             setError('All fields are required.');
         } else if (password !== confPassword) {
@@ -36,17 +34,14 @@ function SignUp() {
         }
 
         e.preventDefault();
+
         try {
             const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/register', { name, email, username, password, role });
-            console.log(res.data);
-            // const token = res.data.token;
+            const token = res.data.token;
 
-            // localStorage.setItem('token', token);
-
+            localStorage.setItem('token', token);
             login();
-            navigate('/FAQ')
-
-            // console.log('Login successful. Token:', token);
+            navigate('/Dashboard');
         } catch (err) {
             console.error(err);
         }
@@ -70,9 +65,6 @@ function SignUp() {
 
                     <input type="text" placeholder="Username" value={username} 
                             onChange={(e) => setUsername(e.target.value)} required/>
-                    
-                    {/* <input type="phone" placeholder="Phone number" value={phone} 
-                            onChange={(e) => setPhone(e.target.value)} required/> */}
 
                     <select
                         id="role"

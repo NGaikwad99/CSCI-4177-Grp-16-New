@@ -1,3 +1,4 @@
+// Author(s): Nupur Gaikwad (B00859350) 
 import React, { createContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
