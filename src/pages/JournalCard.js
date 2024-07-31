@@ -1,3 +1,4 @@
+//author: Devon Turple B00851220
 import React from 'react';
 import './Journal.css';
 import { Link } from 'react-router-dom';

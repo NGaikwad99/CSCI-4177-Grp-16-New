@@ -1,3 +1,4 @@
+//author: Devon Turple B00851220
 import './Journal.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';

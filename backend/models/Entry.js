@@ -1,3 +1,4 @@
+//author: Devon Turple B00851220
 const mongoose = require('mongoose');
 
 const EntrySchema = new mongoose.Schema({
