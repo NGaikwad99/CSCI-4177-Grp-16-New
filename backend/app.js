@@ -1,4 +1,4 @@
-//authors: Devon Turple B00851220, Nupur Gaikwad (B00859350) 
+//authors: Devon Turple B00851220, Nupur Gaikwad (B00859350), Ahmed Al-Naamani(B00896307 (Meeting Scheduler Routes))
 const express = require('express'); //instance of an express application is created
 const cors = require('cors');
 const { ObjectId } = require('mongodb');

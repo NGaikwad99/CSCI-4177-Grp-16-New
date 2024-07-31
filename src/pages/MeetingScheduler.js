@@ -1,5 +1,6 @@
 /**
- * Author: Ahmed Al-Naamani
+ * Author: Ahmed Al-Naamani(B00896307)
+ * to test this locally change the BACKEND_URL of this page to http://localhost:3001 and change the Login's URL to http://localhost:3001
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
