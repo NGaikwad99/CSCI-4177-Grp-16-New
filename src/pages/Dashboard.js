@@ -1,6 +1,5 @@
-// Author: Sofia Jia
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import meeting from "../assets/img/meeting.jpg";
 import forum from "../assets/img/community.jpg";
@@ -8,18 +7,31 @@ import friends from "../assets/img/friends.jpg";
 import journal from "../assets/img/journal.jpg";
 import profile from "../assets/img/my_profile.jpg";
 import settings from "../assets/img/settings.jpg";
+import { AuthContext } from '../components/authContext';
 
 function Dashboard() {
+  const { userRole } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const toMeet = () => {
+    const role = localStorage.getItem('role'); 
+    if (role) {
+        navigate('/MeetingScheduler', { state: { userType: role } });
+    } else {
+        console.error('User role is not defined');
+    }
+};
+
   return (
     <div className="dashboard">
       <div className="grid-container">
-        <Link to="/meetings" className="grid-item meetings">
+        <div className="grid-item meetings" onClick={toMeet}>
           <div className="image">
             <img src={meeting} alt="Meetings" />
           </div>
           <h3>Meetings</h3>
           <span>Click here to schedule or join a meeting.</span>
-        </Link>
+        </div>
         <Link to="/forum" className="grid-item forum">
           <div className="image">
             <img src={forum} alt="Forum" />

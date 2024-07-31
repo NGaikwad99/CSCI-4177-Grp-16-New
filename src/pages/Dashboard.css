@@ -25,6 +25,7 @@
     text-decoration: none;
     color: black;
     background-color: #f9f9f9; /* Light grey background */
+    cursor: pointer;
   }
   
   .grid-item .image {

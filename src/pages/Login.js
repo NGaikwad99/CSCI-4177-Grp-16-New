@@ -24,15 +24,14 @@ function Login() {
             try {
                 // Logging in the user and getting token
                 const res = await axios.post('https://csci-4177-grp-16-main.onrender.com/login', { username, password });
-                console.log(res.data);
-                const token = res.data.token;
-    
+                const { token, role } = res.data;
                 localStorage.setItem('token', token);
-    
-                login();
-                setError('');
+                localStorage.setItem('role', role);  
 
-                navigate('/Dashboard')
+                login(role);
+
+                setError('');
+                navigate('/Dashboard');  
             } catch (err) {
                 setError('Invalid username or password. Please try again.');
             }
@@ -45,11 +44,11 @@ function Login() {
                 <h1>Login</h1>
 
                 <form className="inputForm loginForm" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Username"  value={username} 
-                            onChange={(e) => setUsername(e.target.value)} required/>
+                    <input type="text" placeholder="Username" value={username}
+                        onChange={(e) => setUsername(e.target.value)} required />
 
-                    <input type="password" placeholder="Password" value={password} 
-                            onChange={(e) => setPassword(e.target.value)} required/>
+                    <input type="password" placeholder="Password" value={password}
+                        onChange={(e) => setPassword(e.target.value)} required />
 
                     {error && <p className="error-msg">{error}</p>}
 
