@@ -1,6 +1,6 @@
 /**
  * Author: Ahmed Al-Naamani(B00896307)
- * to test this locally change the BACKEND_URL of this page to http://localhost:3001 and change the Login's URL to http://localhost:3001
+ * to test this locally change the BACKEND_URL of this page to http://localhost:3001 and change the Login's URL to http://localhost:3001https://csci-4177-grp-16-main.onrender.com
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -105,9 +105,9 @@ function MeetingScheduler() {
             date: newMeetingDate,
             person: selectedPerson,
             type: meetingType,
-            userRole
+            userType: userRole
         };
-
+        console.log('New Meeting:', newMeeting);
         try {
             if (isRescheduling) {
                 const response = await axios.put(`${BACKEND_URL}/meetings/reschedule/${upcomingMeetings[rescheduleIndex]._id}`, newMeeting);
