@@ -22,7 +22,6 @@
 #name {
   display: flex;
   gap: 10px;
-  margin-bottom: 10px;
 }
 
 #name input {
@@ -57,3 +56,10 @@
   transform: scale(1.05);
 }
 
+@media (max-width: 900px) {
+  .contactPg {
+    flex-direction: column;
+    gap: 0px;
+    margin: 0px;
+  }
+}

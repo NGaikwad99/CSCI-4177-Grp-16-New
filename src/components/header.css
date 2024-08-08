@@ -104,3 +104,55 @@ a {
     border-radius: 5px;
     display: inline-block;
 }
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .auth {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .logo-div {
+        margin: auto;
+    }
+
+    .nav-auth {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .profile-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .dropdown-menu {
+        top: 100px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-div img {
+        max-height: 32px;
+    }
+
+    .mission {
+        flex-direction: column;
+    }
+}
+

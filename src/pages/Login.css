@@ -18,3 +18,10 @@
 .login h1 {
     margin-bottom: 16px;
 }
+
+@media (max-width: 600px) {
+    .login-main {
+        width: 80vw;
+        margin: 20px auto;
+    }
+}
