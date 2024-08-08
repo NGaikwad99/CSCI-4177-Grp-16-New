@@ -17,6 +17,7 @@ import MeetingScheduler from './pages/MeetingScheduler';
 import ResetPassword from './pages/ResetPassword';
 import Journal from './pages/Journal';
 import JournalEntry from './pages/JournalEntry';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="ResetPassword" element={<ResetPassword />} />
           <Route path="Journal" element={<Journal />} />
           <Route path="JournalEntry/:id" element={<JournalEntry />} />
+          <Route path="Settings" element={<Settings />} />
         </Routes>
         <Footer />
       </Router>

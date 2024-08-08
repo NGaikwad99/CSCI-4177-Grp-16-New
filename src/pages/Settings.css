@@ -1,0 +1,61 @@
+.settings-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  
+  .settings-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .settings-page h2 {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .settings-page h3 {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .settings-page p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .settings-page ul {
+    list-style-type: none;
+    padding-left: 40px;
+  }
+  
+  .settings-page ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .settings-page {
+      padding: 10px;
+    }
+  
+    .settings-page h1 {
+      font-size: 2em;
+    }
+  
+    .settings-page h2 {
+      font-size: 1.75em;
+    }
+  
+    .settings-page h3 {
+      font-size: 1.3em;
+    }
+  
+    .settings-page p, .settings-page ul li {
+      font-size: 1em;
+    }
+  }
