@@ -3,11 +3,12 @@
  * to test this locally change the BACKEND_URL of this page to http://localhost:3001 and change the Login's URL to http://localhost:3001https://csci-4177-grp-16-main.onrender.com
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef} from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { Calendar } from 'react-calendar';
 import "./MeetingScheduler.css";
+import TimePicker from 'react-time-picker';
 
 const BACKEND_URL = 'https://csci-4177-grp-16-main.onrender.com';
 
@@ -29,13 +30,14 @@ function MeetingScheduler() {
     const [meetingType, setMeetingType] = useState('');
     const [selectedPerson, setSelectedPerson] = useState('');
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState('');
     const [upcomingMeetings, setUpcomingMeetings] = useState([]);
     const [showPrompt, setShowPrompt] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [isRescheduling, setIsRescheduling] = useState(false);
     const [rescheduleIndex, setRescheduleIndex] = useState(null);
     const [showMore, setShowMore] = useState(false);
-
+    const promptRef = useRef();
     const [availableUsers, setAvailableUsers] = useState([]);
 
     const fetchUsers = useCallback(async () => {
@@ -70,7 +72,27 @@ function MeetingScheduler() {
             fetchUpcomingMeetings();
         }
     }, [userRole, fetchUsers, fetchUpcomingMeetings]);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (promptRef.current && !promptRef.current.contains(event.target)) {
+                setShowPrompt(false);
+            }
+        };
 
+        const handleEscapePress = (event) => {
+            if (event.key === 'Escape') {
+                setShowPrompt(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleEscapePress);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleEscapePress);
+        };
+    }, []);
     const handleScheduleMeeting = async () => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -87,11 +109,16 @@ function MeetingScheduler() {
             setAlertMessage('Please select a valid date.');
             return;
         }
-
+        if (!selectedTime) {
+            setAlertMessage('Please select a valid time.');
+            return;
+        }
         const newMeetingDate = selectedDate.toLocaleDateString();
+        const newMeetingDateTime = `${newMeetingDate} ${selectedTime}`;
         const isDuplicate = upcomingMeetings.some(
             (meeting, index) => 
-                meeting.date === newMeetingDate && 
+                meeting.date === newMeetingDateTime && 
+                meeting.time === selectedTime &&
                 meeting.person === selectedPerson &&
                 index !== rescheduleIndex
         );
@@ -103,6 +130,7 @@ function MeetingScheduler() {
 
         const newMeeting = {
             date: newMeetingDate,
+            time: selectedTime,
             person: selectedPerson,
             type: meetingType,
             userType: userRole
@@ -134,7 +162,9 @@ function MeetingScheduler() {
     const handleReschedule = (index) => {
         const meeting = upcomingMeetings[index];
         console.log(`Rescheduling meeting with ObjectId: ${meeting._id}`);
-        setSelectedDate(new Date(meeting.date));
+        const [date, time] = meeting.date.split(' ');
+        setSelectedDate(new Date(date));
+        setSelectedTime(time);
         setMeetingType(meeting.type);
         setSelectedPerson(meeting.person);
         setIsRescheduling(true);
@@ -187,7 +217,7 @@ function MeetingScheduler() {
                     </div>
                     {visibleMeetings.map((meeting, index) => (
                         <div className="meeting" key={index}>
-                            <h3>{meeting.date}</h3>
+                            <h3>{`${meeting.date} ${meeting.time}`}</h3>
                             <p>{meeting.person}</p>
                             <p>{meeting.type}</p>
                             <div className="meeting-buttons">
@@ -205,7 +235,7 @@ function MeetingScheduler() {
                 </div>
             </div>
             {showPrompt && (
-                <div className="prompt">
+                <div className="prompt" ref={promptRef}>
                     <div className="prompt-content">
                         <h3>Meeting Type</h3>
                         <div className="radio-group">
@@ -249,6 +279,19 @@ function MeetingScheduler() {
                                     const hasMeeting = upcomingMeetings.some(meeting => meeting.date === formattedDate);
                                     return hasMeeting ? <div className="dot"></div> : null;
                                 }}
+                            />
+                        </div>
+                        <div className="time-picker">
+                            <h3>Select Time</h3>
+                            <TimePicker
+                                onChange={setSelectedTime}
+                                value={selectedTime}
+                                disableClock
+                                format="h:mm a"
+                                hourPlaceholder="hh"
+                                minutePlaceholder="mm"
+                                maxDetail="minute"
+                                required
                             />
                         </div>
                         <button className="schedule-btn" onClick={handleScheduleMeeting}>Schedule</button>

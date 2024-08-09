@@ -8,6 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .meeting-scheduler {
@@ -16,7 +17,7 @@
     justify-content: start;
     font-size: 1.4rem;
     width: auto;
-    background-color: #9BDCF1;
+    background-color: #76C7C0;
     border: 1px solid black;
 }
 
@@ -39,7 +40,7 @@
 .calendar {
     margin-top: 20px;
     width: auto;
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     font-family: inherit;
     box-shadow: 0 11px 10px rgba(0, 0, 0, 0.1);
     border: 1px solid black;
@@ -49,11 +50,11 @@
 .custom-calendar-main {
     width: 100%;
     height: 100%;
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
 }
 
 .custom-calendar-main .react-calendar__tile {
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     margin-bottom: 5px; 
@@ -66,13 +67,13 @@
 }
 
 .custom-calendar-main .react-calendar__tile:hover {
-    background-color: #E7A2A0;
+    background-color: #E6B08B;
     transform: scale(1.05);
     cursor: pointer;
 }
 
 .custom-calendar-main .react-calendar__tile--active {
-    background-color: #4CAF50;
+    background-color:  #388E3C;
     color: white;
     cursor: pointer;
 }
@@ -96,7 +97,7 @@
 }
 
 .custom-calendar-main .react-calendar__navigation__arrow {
-    background-color: #9BDCF1;
+    background-color: #76C7C0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     color: black;
@@ -116,13 +117,13 @@
 }
 
 .custom-calendar-main .react-calendar__navigation__arrow:hover {
-    background-color: #79C6E3;
+    background-color: #639C9A;
     transform: scale(1.1);
 }
 
 .custom-calendar-main .react-calendar__navigation__label {
     font-family: inherit;
-    background-color: #FFB8B2;
+    background-color:  #FFC1A1;
     font-size: 1.4rem; 
     border: none;
 }
@@ -135,7 +136,7 @@
 
 .upcoming {
     border: 1px solid black;
-    background-color: #BCEAC9;
+    background-color: #C3D7E0;
     width: 20%;
     margin-top: 30px;
     margin-right: 10px;
@@ -160,7 +161,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #BCEAC9;
+    background-color: #C3D7E0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%; 
@@ -174,38 +175,39 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .schedule-btn {
-    background-color: #4CAF50;
+    background-color: #388E3C;
 }
 
 .schedule-btn:hover {
-    background-color: #45a049;
+    background-color: #2E7D32;
 }
 
 .reschedule-btn {
-    background-color: #FFA500; 
+    background-color: #F57C00; 
 }
 
 .reschedule-btn:hover {
-    background-color: #FF8C00; 
+    background-color: #EF6C00; 
 }
 
 .cancel-btn {
-    background-color: #FF5733;
+    background-color: #D32F2F;
 }
 
 .cancel-btn:hover {
-    background-color: #e14d2a; 
+    background-color: #C62828; 
 }
 
 .load-more-btn {
-    background-color: #6c757d; 
+    background-color: #5A6268; 
 }
 
 .load-more-btn:hover {
-    background-color: #5a6268; 
+    background-color: #4A4F54; 
 }
 
 .prompt {
@@ -213,19 +215,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #E0FFE6;
+    background-color: #C3D7E0;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     max-height: 70%; 
     overflow-y: auto;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .prompt-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .prompt-content h3 {
@@ -238,17 +242,17 @@
 
 .calendar-prompt {
     width: 100%;
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
 }
 
 .custom-calendar-prompt {
     width: 100%;
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     height: 300px;
 }
 
 .custom-calendar-prompt .react-calendar__tile {
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     margin-bottom: 5px; 
@@ -261,13 +265,13 @@
 }
 
 .custom-calendar-prompt .react-calendar__tile:hover {
-    background-color: #E7A2A0;
+    background-color: #E6B08B;
     transform: scale(1.05);
     cursor: pointer;
 }
 
 .custom-calendar-prompt .react-calendar__tile--active {
-    background-color: #4CAF50;
+    background-color: #388E3C;
     color: white;
     cursor: pointer;
 }
@@ -291,7 +295,7 @@
 }
 
 .custom-calendar-prompt .react-calendar__navigation__arrow {
-    background-color: #9BDCF1;
+    background-color: #76C7C0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     color: black;
@@ -311,13 +315,13 @@
 }
 
 .custom-calendar-prompt .react-calendar__navigation__arrow:hover {
-    background-color: #79C6E3;
+    background-color: #639C9A;
     transform: scale(1.1);
 }
 
 .custom-calendar-prompt .react-calendar__navigation__label {
     font-family: inherit;
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     font-size: 1.2rem; 
     border: none;
 }
@@ -339,11 +343,12 @@
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #FFB8B2;
+    background-color: #FFC1A1;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .alert p {
@@ -352,7 +357,7 @@
 }
 
 .alert button {
-    background-color: #4CAF50;
+    background-color: #388E3C;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -363,13 +368,14 @@
 }
 
 .alert button:hover {
-    background-color: #45a049;
+    background-color: #2E7D32;
 }
 
 .meeting-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
+    font-family: "Crimson Pro", sans-serif;
 }
 
 .dot {
@@ -381,4 +387,160 @@
     height: 10px;
     background-color: red;
     border-radius: 50%;
+}
+
+.time-picker {
+    width: 300px;
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: "Crimson Pro", sans-serif;
+}
+
+.time-picker h3 {
+    margin-bottom: 10px;
+}
+
+.react-time-picker {
+    background-color:  #FFC1A1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 10px;
+}
+
+.react-time-picker__wrapper {
+    background-color:  #FFC1A1;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.react-time-picker__inputGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.react-time-picker__inputGroup__input {
+    background-color:  #FFC1A1;
+    border: none;
+    font-size: 1.2rem;
+    text-align: center; 
+    box-sizing: border-box;
+    font-family: "Crimson Pro", sans-serif;
+}
+
+.react-time-picker__inputGroup__hour,
+.react-time-picker__inputGroup__minute {
+    width: 3em !important; 
+    height: 3em !important; 
+    font-size: 1.2rem !important;
+    padding: 5px !important; 
+    text-align: center !important; 
+    background-color:  #FFC1A1 !important; 
+    border: 1px solid rgba(0, 0, 0, 0.1) !important; 
+}
+
+.react-time-picker__inputGroup__divider {
+    color: black;
+    padding: 0 5px !important; 
+    font-size: 1.2rem !important; 
+}
+
+.react-time-picker__clock-button {
+    display: none;
+}
+
+.react-time-picker__inputGroup__hour:focus,
+.react-time-picker__inputGroup__minute:focus {
+    outline: none;
+    border: 1px solid #388E3C !important; 
+}
+
+/* Styles for the leading zero */
+.react-time-picker__inputGroup__leadingZero {
+    font-size: 1.2rem !important;
+    background-color: #FFC1A1 !important; 
+    padding: 5px !important; 
+}
+@media screen and (max-width: 1024px) {
+    .main-cont {
+        flex-direction: column;
+    }
+    
+    .left-section, .upcoming {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .meeting-scheduler {
+        justify-content: center;
+        height: auto;
+    }
+    
+    .calendar {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .calendar {
+        font-size: 1rem;
+    }
+    
+    .custom-calendar-main .react-calendar__tile {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    
+    .custom-calendar-main .react-calendar__navigation {
+        font-size: 1.2rem;
+    }
+    
+    .schedule-btn, .reschedule-btn, .cancel-btn, .load-more-btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+    
+    .time-picker {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .prompt {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .schedule-btn, .reschedule-btn, .cancel-btn, .load-more-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .custom-calendar-main .react-calendar__tile {
+        font-size: 0.9rem;
+    }
+    
+    .custom-calendar-main .react-calendar__navigation {
+        font-size: 1rem;
+    }
+    
+    .time-picker {
+        width: 100%;
+    }
+    
+    .alert button {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
 }
