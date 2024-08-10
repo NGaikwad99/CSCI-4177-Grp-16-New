@@ -30,12 +30,12 @@ function Dashboard() {
           <h3>Meetings</h3>
           <span>Click here to schedule or join a meeting.</span>
         </div>
-        <Link to="/forum" className="grid-item forum">
+        <Link to="/LocalResources" className="grid-item forum">
           <div className="image">
-            <img src={forum} alt="Forum" />
+            <img src={forum} alt="Local Resources" />
           </div>
-          <h3>Forum</h3>
-          <span>Click here to enter our community forum.</span>
+          <h3>Local Resources</h3>
+          <span>Click here to find help nearby.</span>
         </Link>
         <Link to="/journal" className="grid-item journal">
           <div className="image">
@@ -51,12 +51,12 @@ function Dashboard() {
           <h3>My Profile</h3>
           <span>Click here to visit and modify your profile page.</span>
         </Link>
-        <Link to="/friends" className="grid-item friends">
+        <Link to="/OnlineResources" className="grid-item friends">
           <div className="image">
-            <img src={friends} alt="Friends" />
+            <img src={friends} alt="Online Resources" />
           </div>
-          <h3>Friends</h3>
-          <span>Click here to manage your friends list.</span>
+          <h3>Online Resources</h3>
+          <span>Click here to find free resources online.</span>
         </Link>
         <Link to="/settings" className="grid-item settings">
           <div className="image">
