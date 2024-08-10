@@ -162,11 +162,12 @@ function startServer(server, db){
         return res.status(500).json({ message: 'Database connection failed' });
       }
 
-      const { date, person, type, userType } = req.body;
+      const { date, time, person, type, userType } = req.body;
       const formattedDate = new Date(date).toLocaleDateString();
 
       const isDuplicate = await db.collection('meetings').findOne({
         date: formattedDate,
+        time: time,
         person: person,
         userType: userType
       });
@@ -177,6 +178,7 @@ function startServer(server, db){
 
       const meeting = {
         date: formattedDate,
+        time: time,
         person,
         type,
         userType
@@ -218,11 +220,12 @@ function startServer(server, db){
         return res.status(500).json({ message: 'Database connection failed' });
       }
 
-      const { date, person, type, userType } = req.body;
+      const { date, time, person, type, userType } = req.body;
       const formattedDate = new Date(date).toLocaleDateString();
 
       const isDuplicate = await db.collection('meetings').findOne({
         date: formattedDate,
+        time: time,
         person: person,
         userType: userType,
         _id: { $ne: new ObjectId(req.params.id) }
@@ -234,6 +237,7 @@ function startServer(server, db){
 
       const meeting = {
         date: formattedDate,
+        time: time,
         person,
         type,
         userType

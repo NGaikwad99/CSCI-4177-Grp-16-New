@@ -28,6 +28,10 @@ function Header() {
             console.error('User role is not defined');
         }
     };
+
+    const toSettings = () => {
+        navigate('/Settings');
+    };
     return (
         <header className="header">
             <div className="logo-div">
@@ -46,6 +50,7 @@ function Header() {
                     <button onClick={toggleDropdown} className='profile-btn'><FaUserCircle size={40} color="#EB4C2C" /></button>
                     {isOpen && (
                         <div className="dropdown-menu">
+                            <button onClick={toSettings}>Settings</button>
                             <button onClick={() => { logout(); toLogin(); }}>Logout</button>
                         </div>
                     )}
