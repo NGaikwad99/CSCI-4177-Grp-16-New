@@ -14,27 +14,9 @@
     animation: fadeIn 2s ease-in;
 }
 
-.landing .intro .heading h1 {
-    font-size: 56px;
-}
-
-.landing h1 {
-    font-size: 48px;
-}
-
-.landing h2 {
-    font-weight: 600;
-    font-size: 32px;
-}
-
-.landing p {
-    font-size: 20px;
-}
-
 .testimonials p {
     padding: 18px;
     border-radius: 32px;
-    font-size: 24px;
 }
 
 .testimonials .author {
@@ -105,9 +87,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 1200px) {
-    .services {
-        grid-template-columns: repeat(3, 1fr);
+@media (min-width: 900px) {
+    .landing h1 {
+        font-size: 48px;
+    }
+}
+
+@media (min-width: 900px) {
+    .landing h1 {
+        font-size: 48px;
     }
 }
 

@@ -1,8 +1,5 @@
 /* author: Devon Turple B00851220 */
 .content{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
     margin-top: 18px;
 }
 
@@ -30,4 +27,12 @@
     font-size: large;
     font-weight: bold;
     
+}
+
+@media (min-width: 768px) {
+    .content {
+        grid-template-columns: none;
+        display: grid;
+        gap: 12px;
+    }
 }
